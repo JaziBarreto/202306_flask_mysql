@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+{% endblock %}
+
+{% block estilos %}
+{% endblock %}
+
+
+
+{% block contenido %}
+<h3>Detalle Categoria</h3>
+<p>ID: {{categoria.id}}<p/>
+<p>Nombre: {{categoria.nombre}}<p/>
+
+    <div class="row">
+        <div class="col-6">
+            {% for sub in categoria.sub_categorias%}
+                <p>{{sub.nombre}}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+{% endblock %}
+
+{% block estilos %}
+{% endblock %}
+
+
+
+{% block contenido %}
+<h1>Esto es del ejemplo</h1>
+
+<h3>Bodegas</h3>
+
+<div class="row">
+    <div class="col-6">
+        <form action="/crear_bodega" method="post">
+            <div class="row g-3 align-items-center">
+                <div class="col-3">
+                    <label for="name" class="col-form-label">Nombre</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" id="name" name="nombre" class="form-control">
+                </div>
+            </div>
+            <div class="row g-3 align-items-center mt-3">
+                <div class="col-3">
+                </div>
+                <div class="col-9">
+                    <button class="btn btn-primary" type="submit">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <ul>
+            {% for bodega in bodegas %}
+                <li class="mt-1">
+                    {{bodega.id}} - {{bodega.nombre}}
+                    <a class="btn btn-warning btn-sm" href="/editar_bodega/{{bodega.id}}" >Editar</a>
+                    <a class="btn btn-danger btn-sm" href="/eliminar_bodega/{{bodega.id}}" >Eliminar</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<h3>Categorias</h3>
+<hr>
+
+<div class="row">
+    <div class="col-6">
+        <form action="/crear_categoria" method="post">
+            <div class="row g-3 align-items-center">
+                <div class="col-3">
+                    <label for="name" class="col-form-label">Nombre</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" id="name" name="nombre" class="form-control">
+                </div>
+            </div>
+            <div class="row g-3 align-items-center mt-3">
+                <div class="col-3">
+                </div>
+                <div class="col-9">
+                    <button class="btn btn-primary" type="submit">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <ul>
+            {% for categoria in categorias %}
+                <li>{{categoria.id}} - {{categoria.nombre}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+
+<h3 class="mt-5">Sub-Categorias</h3>
+<hr>
+
+<div class="row">
+    <div class="col-6">
+        <form action="/crear_subcategoria" method="post">
+            <div class="row g-3 align-items-center">
+                <div class="col-3">
+                    <label for="name" class="col-form-label">Nombre</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" id="name" name="nombre" class="form-control">
+                </div>
+            </div>
+            <div class="row g-3 align-items-center">
+                <div class="col-3">
+                    <label for="name" class="col-form-label">Categoría</label>
+                </div>
+                <div class="col-9">
+                    <select name="categoria_id" class="form-select">
+                        {% for categoria in categorias %}
+                        <option value="{{categoria.id}}">{{categoria.nombre}}</option>
+                        {% endfor %}                    
+                    </select>
+                </div>
+            </div>
+            <div class="row g-3 align-items-center mt-3">
+                <div class="col-3">
+                </div>
+                <div class="col-9">
+                    <button class="btn btn-primary" type="submit">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <ul>
+            {% for subcategoria in subcategorias %}
+                <li>{{subcategoria.id}} - {{subcategoria.nombre}} viene de: {{subcategoria.categoria.nombre}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+{% endblock %}
+
+{% block estilos %}
+{% endblock %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col-6">
+        <h3> SIGN UP </h3> 
+        <form action="/procesar_registro" method="post">
+            <!-- Campo de Email -->
+            <div class="row g-3 align-items-center mt-3">
+                <div class="col-3">
+                    <label for="email" class="col-form-label">Email</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" id="email" name="email" class="form-control">
+                </div>
+            </div>
+            
+            <!-- Campo de Contraseña -->
+            <div class="row g-3 align-items-center mt-3">
+                <div class="col-3">
+                    <label for="password" class="col-form-label">Password</label>
+                </div>
+                <div class="col-9">
+                    <input type="password" id="password" name="password" class="form-control">
+                </div>
+            </div>
+            
+            <!-- Campo de Confirmar Contraseña -->
+            <div class="row g-3 align-items-center mt-3">
+                <div class="col-3">
+                    <label for="confirm_password" class="col-form-label">Confirm Password</label>
+                </div>
+                <div class="col-9">
+                    <input type="password" id="confirm_password" name="confirm_password" class="form-control">
+                </div>
+            </div>
+
+            <!-- Botón de registro -->
+            <div class="row g-3 align-items-center mt-3">
+                <div class="col-3">
+                </div>
+                <div class="col-9">
+                    <button class="btn btn-primary" type="submit">Sign up</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <h3> LOGIN </h3>
+        <form action="/procesar_login" method="post">
+  <!-- Formulario de inicio de sesión -->
+<form action="/procesar_login" method="post">
+    <!-- Campo de Email para el inicio de sesión -->
+    <div class="row g-3 align-items-center mt-3">
+        <div class="col-3">
+            <label for="login_email" class="col-form-label">Email</label>
+        </div>
+        <div class="col-9">
+            <input type="text" id="login_email" name="login_email" class="form-control">
+        </div>
+    </div>
+    
+    <!-- Campo de Contraseña para el inicio de sesión -->
+    <div class="row g-3 align-items-center mt-3">
+        <div class="col-3">
+            <label for="login_password" class="col-form-label">Password</label>
+        </div>
+        <div class="col-9">
+            <input type="password" id="login_password" name="login_password" class="form-control">
+        </div>
+    </div>
+
+    <!-- Botón de inicio de sesión -->
+    <div class="row g-3 align-items-center mt-3">
+        <div class="col-3">
+        </div>
+        <div class="col-9">
+            <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

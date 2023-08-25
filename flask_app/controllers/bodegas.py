@@ -10,6 +10,13 @@ def crear_bodega():
     data = {
         'nombre': request.form['nombre']
     }
+    #crear una validacion cuando se introduce una nueva bodega
+    errores = Bodega.validar(request.form)
+    if len(errores) > 0:
+        for error in errores: 
+            flash(error, "error")
+        return redirect("/ejemplo")
+
     id = Bodega.save(data)
 
     flash(f"la bodega fue agregada exitosamente con el ID {id}", "success")

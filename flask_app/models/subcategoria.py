@@ -12,10 +12,17 @@ class Subcategoria:
     
     #validación de los datos que se reciben
     @staticmethod
-    def validar(datos_formulario)
-        resultado = True
+    def validar(datos_formulario):
+        errores = []
 
-        return resultado
+        if len(datos_formulario['nombre']) == 0:
+            errores.append("el nombre no tiene datos o algun caracter")
+
+
+        if len(datos_formulario['nombre']) < 3:
+            errores.append("el nombre debe tener mas de tres caracteres")
+
+        return errores #retornaria solo la lista con los errores que existan
 
     @classmethod
     def get_all(cls):

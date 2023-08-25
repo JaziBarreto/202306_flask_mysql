@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+{% endblock %}
+
+{% block estilos %}
+
+{% endblock %}
+
+{% block contenido %}
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-6">
+        <!-- Formulario para "Sign Up" -->
+                <div class="card bg-dark text-white mb-4" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
+                        <p class="text-white-50 mb-5">Please enter your registration details!</p>
+                        <form action="/procesar_registro" method="post">
+                            <div class="form-outline form-white mb-4">
+                                <input type="email" id="typeEmailX" name="email" class="form-control form-control-lg" />
+                                <label class="form-label" for="typeEmailX">Email</label>
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                <input type="password" id="typePasswordX" name="password" class="form-control form-control-lg" />
+                                <label class="form-label" for="typePasswordX">Password</label>
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                <input type="password" id="typeConfirmPasswordX" name="confirm_password" class="form-control form-control-lg" />
+                                <label class="form-label" for="typeConfirmPasswordX">Confirm Password</label>
+                            </div>
+                            <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign Up</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+        <!-- Formulario para "Login" -->
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                        <p class="text-white-50 mb-5">Please enter your login details!</p>
+                        <form action="/procesar_login" method="post">
+                            <div class="form-outline form-white mb-4">
+                                <input type="email" id="typeEmailX" name="login_email" class="form-control form-control-lg" />
+                                <label class="form-label" for="typeEmailX">Email</label>
+                            </div>
+                            <div class="form-outline form-white mb-4">
+                                <input type="password" id="typePasswordX" name="login_password" class="form-control form-control-lg" />
+                                <label class="form-label" for="typePasswordX">Password</label>
+                            </div>
+                            <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

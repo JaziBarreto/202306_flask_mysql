@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+{% endblock %}
+
+{% block estilos %}
+<style>
+    .friend-card {
+        background-color: #e6a8d7; /* Color lila */
+        margin-top: 10px;
+    }
+
+    .add-friend-card {
+        background-color: #ff9db4; /* Color rosa claro */
+        margin-top: 10px;
+    }
+
+    .submit-button {
+        background-color: #ff388e; /* Color rosa oscuro */
+        color: white;
+    }
+
+    /* Alinear el formulario a la izquierda */
+    .friend-form {
+        text-align: left;
+    }
+</style>
+{% endblock %}
+
+{% block contenido %}
+<h1>Todos mis amigos</h1>
+<div class="container mt-5">
+    <h3>My friends</h3>
+    <div class="row">
+        {% for one_friend in all_friends %}
+        <div class="col-md-4">
+            <div class="card mb-4 friend-card">
+                <div class="card-body">
+                    <h5 class="card-title">{{one_friend.first_name}} {{one_friend.last_name}}</h5>
+                    <p class="card-text">{{one_friend.occupation}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="col-md-4">
+            <div class="card mb-4 add-friend-card">
+                <div class="card-body">
+                    <h5 class="card-title"> ADD A NEW FRIEND </h5>
+                    <form action="/create_friend" method="post" class="friend-form">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" name="first_name" class="form-control">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" name="last_name" class="form-control">
+                        <label for="occupation">Occupation:</label>
+                        <input type="text" name="occupation" class="form-control">
+                        <input type="submit" value="Add Friend" class="btn submit-button">
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

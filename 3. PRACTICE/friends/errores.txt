@@ -1,0 +1,12 @@
+Escribir un user o contraseña que no se corresponda al propio
+Nombrar mal la base de datos
+Tratar de acceder a una columna dentro de la tabla de datos que no existe
+Importar mal la tabla por olvidar escribir una coma, una letra o un espacio
+Error de manipulacion de excepciones 
+Olvidar cerrar la conexion correctamente despues de hacer una consulta
+Error de consulta no válida 
+Error de syntaxis sql
+Llamar mal a la tabla, por un nombre que no le corresponde 
+Error de tipo de datos, debe coincidir lo que se consulta con el tipo de datos que estara remitiendo
+Un error de consulta que no devuelve resultados, lo que puede causar que la pagina caiga, por eso hay que poner una condicion sobre como
+debe accionar en caso de que no encuentre el dato

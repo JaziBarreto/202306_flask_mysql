@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block estilos %}
+<style>
+    .user-card {
+        margin: 10px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .add-user-button {
+        margin-top: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <h1>All Users</h1>
+    <div class="row">
+        {% for user in all_users %}
+        <div class="col-md-4">
+            <div class="user-card">
+                <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+                <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+                <p class="card-text"><strong>Created at: </strong> {{ user.created_at }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <a href="/" class="btn btn-info btn-sm add-user-button">Add user</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

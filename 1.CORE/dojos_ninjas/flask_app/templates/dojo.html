@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block estilos %}
+{% endblock %}
+
+{% block menu %}
+
+{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-4 m-4 p-4 rounded" style="background-color: #33393E; color: aliceblue; height: 100%;">
+            <h2>Nuevo Dojo</h2>
+            <form action="/dojo/create/" method="post">
+                <label for="name">Nombre</label>
+                <div class="form-group">
+                    <input type="text" name="name" id="dojo" class="form-control" placeholder="Write a name">
+                </div>
+                <div class="form-group mt-3">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-sm-4 m-4 p-4 rounded" style="background-color: #33393E; color: aliceblue;">
+            <h2>All the Dojos</h2>
+            <div class="list-group list-group-numbered">
+                {% for dojo in dojos %}
+                <a href="/dojo/{{ dojo.id }}" class="list-group-item list-group-item-action">{{ dojo.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-12 text-center">
+            <a class="btn btn-primary" href="/ninja/">Create a Ninja</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block titulo %} Session Dojo {% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 m-4 p-4">
+            <h2>{{ dojo.name }} Dojo</h2>
+            <table class="table table-dark table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Age</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for ninja in ninjas %}
+                  <tr>
+                        <td>{{ ninja.first_name }}</td>
+                        <td>{{ ninja.last_name }}</td>
+                        <td>{{ ninja.age }}</td>
+                  </tr>
+                
+                {% endfor %}
+                
+                </tbody>
+              </table>
+        </div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-12 text-center">
+            <a class="btn btn-warning" href="/dojo/"> GET BACK </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

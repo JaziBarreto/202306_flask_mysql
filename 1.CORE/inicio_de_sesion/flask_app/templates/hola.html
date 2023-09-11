@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block titulo %}INICIO DE SESION{% endblock %}
+
+{% block estilos %}
+{% endblock %}
+
+{% block menu %}
+\<nav class="navbar navbar-expand-lg navbar-light" style="background-color: black;">
+    <div class="container">
+        <a class="navbar-brand" style="font-weight: bold; color: white;">Hello baby {{session.usuario.first_name}} {{session.usuario.last_name}}!!</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+{% endblock %}
+
+{% block contenido %}
+PARA PROBAR SI LLEGA LA INFO
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block titulo %}INICIO DE SESION{% endblock %}
+
+{% block estilos %}
+{% endblock %}
+
+{% block menu %}
+<h1 class="font-weight-bold display-3">Recipe Share</h1>
+{% endblock %}
+
+{% block contenido %}
+<div class="user-form-container">
+    <div class="row">
+        <div class="col-6">
+            <!-- Formulario para "Sign Up" -->
+            <div class="card bg-dark text-white mb-4" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+                    <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
+                    <p class="text-white-50 mb-5">Please enter your registration details!</p>
+                    <form action="/procesar_registro" method="post" class="user-form">
+                        <div class="form-outline form-white mb-4">
+                            <input type="text" name="first_name" class="form-control form-control-lg" required>
+                            <label class="form-label" for="first_name">First Name</label>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <input type="text" name="last_name" class="form-control form-control-lg" required>
+                            <label class="form-label" for="last_name">Last Name</label>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <input type="email" name="email" class="form-control form-control-lg" required>
+                            <label class="form-label" for="email">Email</label>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <input type="password" name="password" class="form-control form-control-lg" required>
+                            <label class="form-label" for="password">Password</label>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <input type="password" name="confirmar_password" class="form-control form-control-lg" required>
+                            <label class="form-label" for="confirmar_password">Confirm Password</label>
+                        </div>
+                        <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <!-- Formulario para "Login" -->
+            <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+                    <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                    <p class="text-white-50 mb-5">Please enter your login details!</p>
+                    <form action="/procesar_inicio" method="post" class="user-form">
+                        <div class="form-outline form-white mb-4">
+                            <input type="email" name="email" class="form-control form-control-lg" required>
+                            <label class="form-label" for="email">Email</label>
+                        </div>
+                        <div class="form-outline form-white mb-4">
+                            <input type="password" name="password" class="form-control form-control-lg" required>
+                            <label class="form-label" for="password">Password</label>
+                        </div>
+                        <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block titulo %}INICIO DE SESION{% endblock %}
+
+{% block estilos %}
+<style>
+.btn {
+    padding: .45rem 1.5rem .35rem;
+  }
+  
+  .gradient-custom {
+    /* fallback for old browsers */
+    background: #c471f5;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1))
+  }
+  html,
+  body,
+  .intro {
+    height: 100%;
+  }
+  
+  .gradient-custom-1 {
+    /* fallback for old browsers */
+    background: #cd9cf2;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1))
+  }
+  
+  table td,
+  table th {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  tbody td {
+    font-weight: 500;
+    color: #999999;
+  }
+  th:nth-child(4) {
+    text-align: center;
+}
+</style>
+{% endblock %}
+
+{% block menu %}
+<nav class="navbar navbar-expand-lg navbar-dark gradient-custom">
+    <div class="container-fluid">
+      <p class="navbar-brand">Welcome {{session.usuario.first_name}}</p>
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-bars text-light"></i>
+      </button>
+
+        <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link" href="/create">
+              <div>
+                <i class="fas fa-bell fa-lg mb-1"></i>
+                <span class="badge rounded-pill badge-notification bg-dark">+</span>
+              </div>
+              Crea una nueva receta
+            </a>
+          </li>
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link" href="/salir">
+              <div>
+                <i class="fas fa-globe-americas fa-lg mb-1"></i>
+                <span class="badge rounded-pill badge-notification bg-dark"> 🚪 </span>
+              </div>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="mb-4">Editar Receta</h1>
+            <form method="POST" action="{{ url_for('editar_receta', id=receta.id) }}">
+
+                <!-- Nombre de la receta -->
+                <div class="form-group">
+                    <label for="name">Nombre de la Receta:</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ receta.name }}" required>
+                </div>
+                
+                <!-- Descripción de la receta -->
+                <div class="form-group">
+                    <label for="description">Descripción de la Receta:</label>
+                    <textarea class="form-control" id="description" name="description" required>{{ receta.description }}</textarea>
+                </div>
+                
+                <!-- Instrucciones de la receta -->
+                <div class="form-group">
+                    <label for="instruction">Instrucciones de la Receta:</label>
+                    <textarea class="form-control" id="instruction" name="instruction" required>{{ receta.instruction }}</textarea>
+                </div>
+                
+                <!-- Fecha de cocinado de la receta -->
+                <div class="form-group">
+                    <label for="date_cooked">Fecha de Cocinado:</label>
+                    <input type="date" class="form-control" id="date_cooked" name="date_cooked" value="{{ receta.date_cooked }}" required>
+                </div>
+                
+                <!-- ¿Se cocina en menos de 30 minutos? -->
+                <div class="form-group">
+                    <label for="cooking">¿Se cocina en menos de 30 minutos?</label>
+                    <select class="form-control" id="cooking" name="cooking" required>
+                        <option value="0" {% if receta.cooking == 0 %}selected{% endif %}>Sí</option>
+                        <option value="1" {% if receta.cooking == 1 %}selected{% endif %}>No</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-warning mt-3" href="/">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

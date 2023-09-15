@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block titulo %}INICIO DE SESION{% endblock %}
+
+{% block estilos %}
+<style>
+.btn {
+    padding: .45rem 1.5rem .35rem;
+  }
+  
+  .gradient-custom {
+    /* fallback for old browsers */
+    background: #c471f5;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1))
+  }
+  html,
+  body,
+  .intro {
+    height: 100%;
+  }
+  
+  .gradient-custom-1 {
+    /* fallback for old browsers */
+    background: #cd9cf2;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1))
+  }
+  
+  table td,
+  table th {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  tbody td {
+    font-weight: 500;
+    color: #999999;
+  }
+  th:nth-child(4) {
+    text-align: center;
+}
+</style>
+{% endblock %}
+
+{% block menu %}
+<nav class="navbar navbar-expand-lg navbar-dark gradient-custom">
+    <div class="container-fluid">
+      <p class="navbar-brand">Welcome {{session.usuario.first_name}}</p>
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-bars text-light"></i>
+      </button>
+
+        <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link" href="/create">
+              <div>
+                <i class="fas fa-bell fa-lg mb-1"></i>
+                <span class="badge rounded-pill badge-notification bg-dark">+</span>
+              </div>
+              Crea una nueva receta
+            </a>
+          </li>
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link" href="/salir">
+              <div>
+                <i class="fas fa-globe-americas fa-lg mb-1"></i>
+                <span class="badge rounded-pill badge-notification bg-dark"> 🚪 </span>
+              </div>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block contenido %}
+<div class="container mt-5">
+  <h3>Detalles de Receta: {{receta.name}}</h3>
+  <h6>Posteado por: {{receta.author}} </h6>
+  <hr>
+  <div class="row">
+      <div class="col-md-6">
+          <h4>Descripción:</h4>
+          <p>{{ receta.description }}</p>
+          <h4>Se cocina en menos de 30 minutos:</h4>
+          <p>
+              {% if receta.cooking == 0 %}
+                  Yes
+              {% else %}
+                  No
+              {% endif %}
+          </p>
+          <h4>Instrucciones:</h4>
+          <p>{{ receta.instruction }}</p>
+          <h4>Fecha de Creación:</h4>
+          <p>{{ receta.date_cooked }}</p>
+      </div>
+  </div>
+</div>
+<a href="/" class="btn btn-warning">Todas las recetas</a>
+
+{% endblock %}

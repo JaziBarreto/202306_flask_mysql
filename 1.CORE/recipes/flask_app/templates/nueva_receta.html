@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Dashboard{% endblock %}
+
+{% block estilos %}
+<style>
+    .btn {
+        padding: .45rem 1.5rem .35rem;
+      }
+      
+      .gradient-custom {
+        /* fallback for old browsers */
+        background: #c471f5;
+      
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1));
+      
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1))
+      }
+      html,
+      body,
+      .intro {
+        height: 100%;
+      }
+      
+      .gradient-custom-1 {
+        /* fallback for old browsers */
+        background: #cd9cf2;
+      
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1));
+      
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to top, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1))
+      }
+      
+      table td,
+      table th {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      tbody td {
+        font-weight: 500;
+        color: #999999;
+      }
+      .text-purple {
+        color: purple;
+    }
+    </style>
+{% endblock %}
+
+{% block menu %}
+<nav class="navbar navbar-expand-lg navbar-dark gradient-custom">
+    <div class="container-fluid">
+      <h1 class="navbar-brand">Welcome {{session.usuario.first_name}}</h1>
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-bars text-light"></i>
+      </button>
+
+        <ul class="navbar-nav ms-auto d-flex flex-row mt-3 mt-lg-0">
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link" href="/create">
+              <div>
+                <i class="fas fa-bell fa-lg mb-1"></i>
+                <span class="badge rounded-pill badge-notification bg-dark">+</span>
+              </div>
+              Crea una nueva receta
+            </a>
+          </li>
+          <li class="nav-item text-center mx-2 mx-lg-1">
+            <a class="nav-link" href="/salir">
+              <div>
+                <i class="fas fa-globe-americas fa-lg mb-1"></i>
+                <span class="badge rounded-pill badge-notification bg-dark"> 🚪 </span>
+              </div>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <!-- Primer Contenedor -->
+        <div class="col-md-6">
+            <h1 class="my-4 text-purple">Crea una nueva receta</h1>
+            <form action="/create" method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre: </label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Descripción: </label>
+                    <input type="text" class="form-control" id="description" name="description">
+                </div>
+                <div class="mb-3">
+                    <label for="instruction" class="form-label">Instrucciones: </label>
+                    <input type="text" class="form-control" name="instruction" id="instruction">
+                </div>
+        </div>
+        <!-- Segundo Contenedor -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div>
+                <div class="mb-3">
+                    <p class="my-4">¿Se cocina en menos de 30 minutos?</p>
+                    <input class="form-check-input" type="radio" name="cooking" id="cooking_yes" value="0">
+                    <label class="form-check-label" for="cooking_yes">Si</label>
+            
+                    <input class="form-check-input" type="radio" name="cooking" id="cooking_no" value="1">
+                    <label class="form-check-label" for="cooking_no">No</label>
+                </div>
+                <div class="mb-3">
+                    <p class="my-4">Día en que fue hecho/cocinado:</p>
+                    <input type="date" name="date_cooked" id="date_cooked">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-light" href="/recetas">Crear Receta</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
